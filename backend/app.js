@@ -222,6 +222,24 @@ app.delete("/tasks/deleteTodo", async (req, res) => {
 });
 
 
+app.delete("/tasks/deleteAll", async (req, res) => {
+  try {
+    let deleteTodo = req.body.newTodos
+    let userId = deleteTodo[0].userid
+
+     await Todos.deleteMany({ userid: userId})
+
+    res.json({
+      success: true,
+      message : "Deleted"
+    });
+
+  } catch (error) {
+
+  }
+});
+
+
 app.listen(process.env.PORT, () => {
   console.log(`Server Started on port ${process.env.PORT}`);
 });

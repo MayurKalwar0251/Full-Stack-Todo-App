@@ -5,6 +5,7 @@ import axios from "axios";
 const Todos = () => {
   const [todos, setTodos] = useState([]);
   const [credentails, setCredentials] = useContext(Credentials);
+  const [arraySize,setArraySize] = useState(false)
 
   const [todoText, setTodoText] = useState("");
   const [refresh,setRefresh] = useState(false)
@@ -24,6 +25,7 @@ const Todos = () => {
   }, []);
 
   async function handleSubmit(e) {
+    setArraySize(false)
     e.preventDefault();
 
     if (!todoText) {
@@ -72,11 +74,20 @@ const Todos = () => {
   }
   
   async function handleDeleteTodo(index) {
-    const newTodos = [...todos]; // Create a copy of the todos array
+    const newTodos = [...todos];
 
     console.log(index);
     await axios.delete("http://localhost:3000/tasks/deleteTodo", {
       data: { newTodo : newTodos[index] }
+    });
+    setRefresh((prev) => !prev);
+  }
+  
+  async function deleteAll() {
+    const newTodos = [...todos];
+    
+    await axios.delete("http://localhost:3000/tasks/deleteAll", {
+      data : {newTodos}
     });
     setRefresh((prev) => !prev);
   }
@@ -105,6 +116,10 @@ const Todos = () => {
       <button type="submit" onClick={handleSubmit} className="add-button">
         Add
       </button>
+      <button hidden={arraySize || todos.length === 0} type="button" onClick={deleteAll} className="add-button">
+        Delete All
+      </button>
+      
     </form>
     {todos.map((item, index) => {
       return (

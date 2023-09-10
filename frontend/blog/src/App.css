@@ -5,6 +5,9 @@
     width: 400px;
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .todo-input {
@@ -20,12 +23,14 @@
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 3px;
+    border-radius: 7px;
     cursor: pointer;
+    margin: 10px;
   }
   
   .add-button:hover {
     background-color: #0056b3;
+    
   }
   
   .todo-item {
@@ -33,6 +38,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
+    gap: 10px;
   }
   
   .checkbox {
@@ -49,6 +55,7 @@
   }
   
   .delete-button {
+    margin-left: 10px;
     background-color: #ff4136;
     color: #fff;
     border: none;

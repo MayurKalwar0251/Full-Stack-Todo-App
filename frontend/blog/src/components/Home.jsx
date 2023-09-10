@@ -13,6 +13,7 @@ const Home = () => {
     {!credentails && <Link to={"/login"} className="link">Login</Link>}
     {!credentails && <Link to={"/register"} className="link">Register</Link>}
     {credentails && <Todos />}
+    
   </div>
     
   )

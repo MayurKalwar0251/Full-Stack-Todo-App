@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+  
   return (
     <div>
       <nav className="navbar mb-3 bg-dark py-2 px-4 navbar-expand-lg navbar-dark">
@@ -30,7 +32,7 @@ const Navbar = () => {
             
             </ul>
             <div className="d-flex fs-4" role="search" >
-              <Link className="btn btn-outline-success" to="/login">
+              <Link className="btn btn-outline-success mx-2" to="/login">
                 Login
               </Link>
               <Link className="btn btn-outline-success" to="/register">
